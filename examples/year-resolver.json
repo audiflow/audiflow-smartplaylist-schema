@@ -3,7 +3,7 @@
   "displayName": "By Year",
   "resolverType": "year",
   "contentType": "groups",
-  "yearHeaderMode": "publishYear",
+  "yearHeaderMode": "perEpisode",
   "customSort": {
     "type": "simple",
     "field": "playlistNumber",
