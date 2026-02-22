@@ -1,0 +1,17 @@
+{
+  "id": "story-arcs",
+  "displayName": "Story Arcs",
+  "resolverType": "titleAppearanceOrder",
+  "contentType": "groups",
+  "titleFilter": "\\[.+\\]",
+  "titleExtractor": {
+    "source": "title",
+    "pattern": "\\[(.+?)\\s+\\d+\\]",
+    "group": 1
+  },
+  "episodeNumberExtractor": {
+    "pattern": "\\[(\\d+)\\]",
+    "captureGroup": 1,
+    "fallbackToRss": true
+  }
+}
