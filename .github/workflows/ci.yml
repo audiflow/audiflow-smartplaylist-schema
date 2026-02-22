@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v4
+
+      - name: Validate schema.json is valid JSON Schema
+        run: uv run --with check-jsonschema check-jsonschema --check-metaschema schema.json
+
+      - name: Validate examples against playlist-definition schema
+        run: scripts/validate.sh --playlist examples/*.json
+
+      - name: Regenerate HTML docs
+        run: scripts/generate-docs.sh
+
+      - name: Verify generated docs are up-to-date
+        run: git diff --exit-code -I 'Generated using.*json-schema-for-humans' docs/
